@@ -39,4 +39,13 @@ RSpec.describe Api::V1::FrameworksController, type: :controller do
 
   end
 
+  describe 'DELETE /api/v1/frameworks/id' do
+    it 'Consegue excluir um framework e retornar status 204?' do
+      framework = Framework.last
+      delete :destroy, params: {id: framework.id}
+      expect(Framework.all).not_to include(framework)
+      expect(response).to have_http_status(204)
+    end
+  end
+
 end
