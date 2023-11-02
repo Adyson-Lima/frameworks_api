@@ -7,7 +7,7 @@ RSpec.describe Framework, type: :model do
   describe 'Teste de preenchimento dos campos do model Framework' do
 
     it 'name consegue ser preenchido?' do
-      @framework.name = ""
+      @framework.name = "rails"
       expect(@framework.name).to eq("rails")
     end
 
