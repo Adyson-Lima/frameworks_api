@@ -28,7 +28,7 @@ RSpec.describe Framework, type: :model do
 
     it 'Framework invalido com campos obrigatorios não preenchidos?' do
       framework = Framework.new
-      expect(framework).to be_valid
+      expect(framework).to be_invalid
     end
 
   end
