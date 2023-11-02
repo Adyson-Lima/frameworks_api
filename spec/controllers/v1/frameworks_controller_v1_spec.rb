@@ -20,4 +20,12 @@ RSpec.describe Api::V1::FrameworksController, type: :controller do
     end
   end
 
+  describe 'POST /api/v1/frameworks' do
+    it 'Consegue criar um framework e retornar status 201?' do
+      post :create, params: {framework: {name: "laravel",language: "php"},fomat: :json}
+      expect(response.body).to include_json(name: "laravel")
+      expect(response).to have_http_status(201)
+    end
+  end
+
 end
