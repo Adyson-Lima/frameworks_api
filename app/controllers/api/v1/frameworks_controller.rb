@@ -1,6 +1,6 @@
 class Api::V1::FrameworksController < ApplicationController
 
-  before_action :set_framework, only: %i[show update] #show update destroy
+  before_action :set_framework, only: %i[show update destroy] #show update destroy
 
   def index
     @frameworks = Framework.all
@@ -26,6 +26,10 @@ class Api::V1::FrameworksController < ApplicationController
     else
       render json: @framework.errors, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @framework.destroy!
   end
 
 private
