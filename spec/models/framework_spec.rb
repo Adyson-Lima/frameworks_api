@@ -18,4 +18,14 @@ RSpec.describe Framework, type: :model do
 
   end
 
+  describe 'Teste de validação do model Framework' do
+
+    it 'Framework valido com campos obrigatorios preenchidos?' do
+      @framework.name = ""
+      @framework.language = ""
+      expect(@framework).to be_valid
+    end
+
+  end
+
 end
