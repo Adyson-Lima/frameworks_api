@@ -28,4 +28,15 @@ RSpec.describe Api::V1::FrameworksController, type: :controller do
     end
   end
 
+  describe 'PATCH /api/v1/frameworks/id' do
+    it 'Consegue atualizar um framework e retornar status 200?' do
+      framework = Framework.last
+      patch :update, params: {framework:
+                              {name: "spring", language: "java"}, id: framework.id}
+      expect(response.body).to include_json(name: "spring")
+      expect(response).to have_http_status(200)
+    end
+
+  end
+
 end
