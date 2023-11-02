@@ -12,4 +12,12 @@ RSpec.describe Api::V1::FrameworksController, type: :controller do
     end
   end
 
+  describe 'GET /api/v1/frameworks/id' do
+    it 'Consegue retornar um framework especifico e retornar status 200?' do
+      get :show, params: {id: @framework.id}
+      expect(response.body).to include_json(id: @framework.id)
+      expect(response).to have_http_status(200)
+    end
+  end
+
 end
