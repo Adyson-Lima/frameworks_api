@@ -11,6 +11,15 @@ class Api::V1::FrameworksController < ApplicationController
     render json: @framework
   end
 
+  def create
+    @framework = Framework.new(framework_params)
+    if @framework.save
+      render json: @framework, status: :created, location: api_v1_framework_url(@framework)
+    else
+      render json: @framework.errors, status: :unprocessable_entity
+    end
+  end
+
 private
 
 def set_framework
