@@ -1,6 +1,6 @@
 class Api::V1::FrameworksController < ApplicationController
 
-  before_action :set_framework, only: %i[show] #show update destroy
+  before_action :set_framework, only: %i[show update] #show update destroy
 
   def index
     @frameworks = Framework.all
@@ -15,6 +15,14 @@ class Api::V1::FrameworksController < ApplicationController
     @framework = Framework.new(framework_params)
     if @framework.save
       render json: @framework, status: :created, location: api_v1_framework_url(@framework)
+    else
+      render json: @framework.errors, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @framework.update(framework_params)
+      render json: @framework
     else
       render json: @framework.errors, status: :unprocessable_entity
     end
