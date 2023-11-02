@@ -11,6 +11,11 @@ RSpec.describe Framework, type: :model do
       expect(@framework.name).to eq("rails")
     end
 
+    it 'language consegue ser preenchido?' do
+      @framework.language = ""
+      expect(@framework.language).to eq("ruby")
+    end
+
   end
 
 end
